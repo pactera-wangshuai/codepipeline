@@ -19,7 +19,7 @@ phases:
       - aws --version
       - java -version
       - ls -lrt /etc/alternatives/java
-      - echo %JAVA_HOME
+#      - echo %JAVA_HOME
       - echo $PATH
   pre_build:
     commands:
