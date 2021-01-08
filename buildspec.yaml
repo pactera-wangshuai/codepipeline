@@ -5,8 +5,8 @@ env:
     version: "0.0.2-SNAPSHOT"
 phases:
   install:
-  runtime-versions:
-    java: "openjdk8"
+    runtime-versions:
+      java: "openjdk8"
   pre_build:
     commands:
       - mvn clean && mvn compile
