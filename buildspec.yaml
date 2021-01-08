@@ -8,16 +8,16 @@ phases:
     runtime-versions:
       java: "openjdk8"
     commands:
-      - aws --version
       - yum install -y java-1.8.0-openjdk
       - yum install -y tar
       - yum install -y wget
+      - aws --version
       - java -version
 #      - pwd
-      - ls /tmp -al
       - wget -P /tmp https://mirror.bit.edu.cn/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
-#      - tar zxf apache-maven-3.6.3-bin.tar.gz /tmp
-#      - ls /tmp
+      - tar zxf /tmp/apache-maven-3.6.3-bin.tar.gz
+      - ls /tmp -al
+  #      - ls /tmp
 #      - export PATH=/opt/apache-maven-3.6.3/bin:$PATH
   pre_build:
     commands:
