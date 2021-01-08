@@ -17,6 +17,8 @@ phases:
       - export PATH=/opt/apache-maven-3.6.3/bin:$PATH
       - aws --version
       - java -version
+      - echo %JAVA_HOME
+      - echo $PATH
   pre_build:
     commands:
       - mvn clean && mvn compile
