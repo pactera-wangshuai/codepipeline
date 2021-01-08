@@ -8,24 +8,25 @@ phases:
     runtime-versions:
       java: "openjdk8"
     commands:
-      - yum install -y java-1.8.0-openjdk
-      - yum install -y tar
-      - yum install -y wget
-#      - yum install -y which
-      - wget -P /tmp https://mirror.bit.edu.cn/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
-      - tar zxf /tmp/apache-maven-3.6.3-bin.tar.gz -C /tmp
-      - ls /tmp/apache-maven-3.6.3 -al
-      - export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.272.b10-1.amzn2.0.1.x86_64/bin
-      - export PATH=/tmp/apache-maven-3.6.3/bin:$JAVA_HOME:$PATH
-      - aws --version
-      - java -version
-#      - ls -lrt /etc/alternatives/java
-      - echo $JAVA_HOME
-      - echo $PATH
-      - ls -al /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.272.b10-1.amzn2.0.1.x86_64
+      - yum search jdk
+#      - yum install -y java-1.8.0-openjdk
+#      - yum install -y tar
+#      - yum install -y wget
+##      - yum install -y which
+#      - wget -P /tmp https://mirror.bit.edu.cn/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+#      - tar zxf /tmp/apache-maven-3.6.3-bin.tar.gz -C /tmp
+#      - ls /tmp/apache-maven-3.6.3 -al
+#      - export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.272.b10-1.amzn2.0.1.x86_64/bin
+#      - export PATH=/tmp/apache-maven-3.6.3/bin:$JAVA_HOME:$PATH
+#      - aws --version
+#      - java -version
+##      - ls -lrt /etc/alternatives/java
+#      - echo $JAVA_HOME
+#      - echo $PATH
+#      - ls -al /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.272.b10-1.amzn2.0.1.x86_64
   pre_build:
     commands:
-      - mvn compile
+#      - mvn compile
 #      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
   build:
     commands:
