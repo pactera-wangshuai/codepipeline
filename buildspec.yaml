@@ -9,6 +9,7 @@ phases:
       java: "openjdk8"
     commands:
       - aws --version
+      - java --version
   pre_build:
     commands:
       - mvn clean && mvn compile
