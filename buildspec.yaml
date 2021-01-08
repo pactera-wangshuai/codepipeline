@@ -22,7 +22,7 @@ phases:
 #      - ls -lrt /etc/alternatives/java
       - echo $JAVA_HOME
       - echo $PATH
-      - ls -al /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.272.b10-1.amzn2.0.1.x86_64/bin
+      - ls -al /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.272.b10-1.amzn2.0.1.x86_64
   pre_build:
     commands:
       - mvn compile
