@@ -5,8 +5,8 @@ env:
     version: "0.0.2-SNAPSHOT"
 phases:
   install:
-    runtime-versions:
-      java: "openjdk8"
+#    runtime-versions:
+#      java: "openjdk8"
     commands:
 #      - yum search jdk
       - yum install -y java-1.8.0-openjdk-devel.x86_64
@@ -15,7 +15,7 @@ phases:
 #      - yum install -y which
       - wget -P /tmp https://mirror.bit.edu.cn/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
       - tar zxf /tmp/apache-maven-3.6.3-bin.tar.gz -C /tmp
-      - ls /tmp/apache-maven-3.6.3 -al
+#      - ls /tmp/apache-maven-3.6.3 -al
       - export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.272.b10-1.amzn2.0.1.x86_64
       - export PATH=/tmp/apache-maven-3.6.3/bin:$JAVA_HOME/bin:$PATH
 #      - aws --version
@@ -25,6 +25,10 @@ phases:
 #      - echo $JAVA_HOME
 #      - echo $PATH
 #      - ls -al /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.272.b10-1.amzn2.0.1.x86_64/bin
+      - yum install -y yum-utils
+      - yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+      - yum list docker-ce --showduplicates | sort -r
+#      - yum install docker-ce-<VERSION_STRING> docker-ce-cli-<VERSION_STRING> containerd.io
   pre_build:
     commands:
       - mvn compile
