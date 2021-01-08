@@ -17,13 +17,13 @@ phases:
       - export PATH=/opt/apache-maven-3.6.3/bin:$PATH
       - aws --version
       - java -version
-#  pre_build:
-#    commands:
-#      - mvn clean && mvn compile
+  pre_build:
+    commands:
+      - mvn clean && mvn compile
 #      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
-#  build:
-#    commands:
-#      - mvn package
+  build:
+    commands:
+      - mvn package
 #      - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
 #      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
 #  post_build:
