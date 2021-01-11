@@ -7,12 +7,13 @@ phases:
   install:
     runtime-versions:
       java: "openjdk8"
-    commands:
-      - kubectl version
-#  pre_build:
 #    commands:
-#      - mvn compile
-#      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+  pre_build:
+    commands:
+      - mvn compile
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name $AWS_EKS_NAME
+      - kubectl version
 #  build:
 #    commands:
 #      - mvn package
