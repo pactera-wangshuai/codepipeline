@@ -10,8 +10,8 @@ phases:
 #    commands:
   pre_build:
     commands:
-      - mvn compile
-      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+#      - mvn compile
+#      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
       - aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name $AWS_EKS_NAME
       - kubectl version
 #  build:
