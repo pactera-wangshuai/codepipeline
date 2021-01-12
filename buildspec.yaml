@@ -25,5 +25,6 @@ phases:
     commands:
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$VERSION
-      - kubectl get -n kube-system pods
+      - kubectl version
+#      - kubectl get -n kube-system pods
 #      - kubectl apply -f 2048.yaml
