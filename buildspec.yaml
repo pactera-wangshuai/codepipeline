@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    VERSION: "0.0.7-SNAPSHOT"
+    VERSION: "0.0.8-SNAPSHOT"
 phases:
   install:
     runtime-versions:
