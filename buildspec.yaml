@@ -2,12 +2,13 @@ version: 0.2
 
 env:
   variables:
-    VERSION: "0.0.6-SNAPSHOT"
+    VERSION: "0.0.7-SNAPSHOT"
 phases:
   install:
     runtime-versions:
       java: "openjdk8"
 #    commands:
+#      - ls / -al
   pre_build:
     commands:
       - mvn compile
@@ -23,6 +24,6 @@ phases:
       - aws ecr batch-delete-image --repository-name $IMAGE_REPO_NAME --image-ids imageTag=$IMAGE_TAG
   post_build:
     commands:
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$VERSION
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
       - kubectl apply -f 2048.yaml
