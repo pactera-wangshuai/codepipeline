@@ -10,21 +10,21 @@ phases:
     commands:
 #      - ls / -al
       - mvn help：system
-  pre_build:
-    commands:
-      - mvn compile
-      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
-      - aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name $AWS_EKS_NAME
-  build:
-    commands:
-      - mvn package
-      - docker build --build-arg SERVER_ENV=$PROFILE -t $IMAGE_REPO_NAME:$IMAGE_TAG .
-      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
-      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$VERSION
-    finally:
-      - aws ecr batch-delete-image --repository-name $IMAGE_REPO_NAME --image-ids imageTag=$IMAGE_TAG
-  post_build:
-    commands:
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$VERSION
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
-      - kubectl apply -f 2048.yaml
+#  pre_build:
+#    commands:
+#      - mvn compile
+#      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+#      - aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name $AWS_EKS_NAME
+#  build:
+#    commands:
+#      - mvn package
+#      - docker build --build-arg SERVER_ENV=$PROFILE -t $IMAGE_REPO_NAME:$IMAGE_TAG .
+#      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+#      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$VERSION
+#    finally:
+#      - aws ecr batch-delete-image --repository-name $IMAGE_REPO_NAME --image-ids imageTag=$IMAGE_TAG
+#  post_build:
+#    commands:
+#      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$VERSION
+#      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+#      - kubectl apply -f 2048.yaml
