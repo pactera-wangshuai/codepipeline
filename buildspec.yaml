@@ -9,7 +9,7 @@ phases:
       java: "openjdk8"
     commands:
 #      - ls / -al
-      - mvn help：system
+      - mvn help:system
 #  pre_build:
 #    commands:
 #      - mvn compile
